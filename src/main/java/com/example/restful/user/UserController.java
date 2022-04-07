@@ -1,8 +1,6 @@
 package com.example.restful.user;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,5 +20,10 @@ public class UserController {
     @GetMapping("/users/{id}")
     public User retrieveAllUsers(@PathVariable int id) {
         return service.findOne(id);
+    }
+
+    @PostMapping(path = "/users")
+    public void createUser(@RequestBody User user){
+        User savedUser = service.save(user);
     }
 }
