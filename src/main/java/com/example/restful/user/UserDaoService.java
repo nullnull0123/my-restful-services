@@ -53,4 +53,18 @@ public class UserDaoService {
         }
         return null;
     }
+
+    public User updateOneById(User param) {
+        Iterator<User> iterator = users.iterator();
+
+        while (iterator.hasNext()) {
+            User user = iterator.next();
+            if (user.getId() == param.getId()) {
+                user.setName(param.getName());
+                user.setJoinDate(param.getJoinDate());
+                return user;
+            }
+        }
+        return null;
+    }
 }
