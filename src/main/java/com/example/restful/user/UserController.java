@@ -4,6 +4,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 
@@ -31,7 +32,7 @@ public class UserController {
     }
 
     @PostMapping(path = "/users")
-    public ResponseEntity createUser(@RequestBody User user){
+    public ResponseEntity createUser(@Valid @RequestBody User user){
         User savedUser = service.save(user);
 
         // 사용자에게 요청값 반환
